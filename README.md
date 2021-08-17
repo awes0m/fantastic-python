@@ -1,2 +1,2 @@
 # fantastic-python
-python scripts from course 2
+python scripts based around APi's and Web scrapping
