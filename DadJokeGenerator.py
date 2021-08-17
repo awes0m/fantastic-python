@@ -25,7 +25,12 @@ def calllogic():
 m= tkinter.Tk()
 m.wm_minsize(width=900, height=100)
 m.title("DAD joke generator")
-Headline=tkinter.Label(m,text="DAD JOke Generator!")
+Headline=tkinter.Label(m,text="""\
+
+██████████████████████████████████████████████████
+█▄─▄▄▀██▀▄─██▄─▄▄▀█████▄─▄█─▄▄─█▄─█─▄█▄─▄▄─█─▄▄▄▄█
+██─██─██─▀─███─██─███─▄█─██─██─██─▄▀███─▄█▀█▄▄▄▄─█
+▀▄▄▄▄▀▀▄▄▀▄▄▀▄▄▄▄▀▀▀▀▄▄▄▀▀▀▄▄▄▄▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀""")
 e= tkinter.Entry(m)
 e.insert(0,"Enter search term or Press generate for Random")
 e.focus
