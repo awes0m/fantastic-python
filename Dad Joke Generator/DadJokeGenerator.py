@@ -1,5 +1,6 @@
 import requests
 import tkinter as tk
+from tkinter import messagebox
 
 url = 'https://icanhazdadjoke.com/'
 search_url='https://icanhazdadjoke.com/search'
@@ -9,19 +10,13 @@ def randomDadJoke():
     global url
     global search_url
     global e
-    userInput=e.get() 
-
-    response = requests.get(search_url,
-    headers={"Accept":"application/json"},
-    params={"term":userInput},
-    )if len(userInput) != 0 else requests.get(url,
-    headers={"Accept":"application/json"})      
+    response=requests.get(url,headers={"Accept":"application/json"})      
 
     data= response.json()
-    print (data)
+    
 
     joke=data['joke']
-    JokeDisplay.config(text=joke)
+    messagebox.showinfo("You have been served ",joke)
 
 def generateDadJoke():
     global search_url,e
@@ -38,11 +33,11 @@ def generateDadJoke():
     joke = results[0]['joke']
 
     if jokeCount>1:
-        JokeDisplay.config(text=f"There are {jokeCount} jokes\n Here's One: \n{results[0]['joke']}")
+        messagebox.showinfo("You have been served",f"There are {jokeCount} jokes\n Here's One: \n{results[0]['joke']}")
     elif jokeCount==1:
-        JokeDisplay.config(text=f"There is ONE Joke\n {joke}")
+        messagebox.showinfo("You have been served",f"There is ONE Joke\n {joke}")
     else:
-        JokeDisplay.config(text=f"Sorry coudn't find a joke with your term {userInput}")
+        messagebox.showinfo("You have been served",f"Sorry coudn't find a joke with your term {userInput}")
 
 #--------------U-I------------#
 m= tk.Tk()
@@ -55,24 +50,18 @@ Headline=tk.Label(m,text="""\
 ██─██─██─▀─███─██─███─▄█─██─██─██─▄▀███─▄█▀█▄▄▄▄─█
 ▀▄▄▄▄▀▀▄▄▀▄▄▀▄▄▄▄▀▀▀▀▄▄▄▀▀▀▄▄▄▄▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀""")
 
-JokeDisplay=tk.Label(m, text="Your dad Joke Here!",font=("Helvetica", "12", "bold italic"))
-JokeDisplay.config(padx=30,pady=30)
+
 RandomGenerateButton=tk.Button(m,text="Random Joke",command=randomDadJoke)
 e= tk.Entry(m)
 e.focus
 e.bind("<FocusIn>", lambda x: e.selection_range(0, tk.END))
 GenerateButton=tk.Button(m,text="Generate with Random String",command=generateDadJoke)
-# GenerateButton.config(padx=2,pady=2)
-# RandomGenerateButton.config(padx=2,pady=2)
 
 
-Headline.grid(row=0,column=0,columnspan=3)
-JokeDisplay.grid(row=1,column=0,columnspan=3)
-RandomGenerateButton.grid(row=2,column=1)
 
-e.grid(row=2,column=4,columnspan=2)
-GenerateButton.grid(row=3,column=4)
-
-
+Headline.pack()
+RandomGenerateButton.pack()
+e.pack()
+GenerateButton.pack()
 m.mainloop()
 
