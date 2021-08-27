@@ -33,7 +33,7 @@ def generateDadJoke():
     joke = results[0]['joke']
 
     if jokeCount>1:
-        messagebox.showinfo("You have been served",f"There are {jokeCount} jokes\n Here's One: \n{results[0]['joke']}")
+        messagebox.showinfo("You have been served",f"There are {jokeCount} jokes\n Here's One: \n \n \n \n {results[0]['joke']} \n \n")
     elif jokeCount==1:
         messagebox.showinfo("You have been served",f"There is ONE Joke\n {joke}")
     else:
