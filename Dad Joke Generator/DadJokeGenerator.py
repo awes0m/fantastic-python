@@ -27,17 +27,23 @@ def generateDadJoke():
     headers={"Accept":"application/json"},
     params={"term": userInput},
     ).json()
+    
+    
     jokeCount=0
     results=response['results']
     jokeCount=len(results)
-    joke = results[0]['joke']
+    try:
+        joke = results[0]['joke']
 
-    if jokeCount>1:
-        messagebox.showinfo("You have been served",f"There are {jokeCount} jokes\n Here's One: \n \n \n \n {results[0]['joke']} \n \n")
-    elif jokeCount==1:
-        messagebox.showinfo("You have been served",f"There is ONE Joke\n {joke}")
-    else:
-        messagebox.showinfo("You have been served",f"Sorry coudn't find a joke with your term {userInput}")
+        if jokeCount>1:
+            messagebox.showinfo("You have been served",f"There are {jokeCount} jokes\n Here's One: \n \n \n \n {results[0]['joke']} \n \n")
+        elif jokeCount==1:
+            messagebox.showinfo("You have been served",f"There is ONE Joke\n {joke}")
+        else:
+            messagebox.showinfo("You have been served",f"Sorry coudn't find a joke with your term {userInput}")
+    except:
+        messagebox.showerror("Not found ",f"Sorry coudn't find a joke with your term -  {userInput}")
+        
 
 #--------------U-I------------#
 m= tk.Tk()
