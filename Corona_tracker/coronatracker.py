@@ -30,7 +30,7 @@ canvas = tk.Tk()
 canvas.geometry("400x400")
 canvas.title("corona tracker App")
 
-f = ("popins", 15, "bold")
+f = ("popins", 10, "bold")
 button = tk.Button(canvas, text="Reload", command=getData)
 button.pack(pady=10)
 
