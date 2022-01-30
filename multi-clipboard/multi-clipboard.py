@@ -2,16 +2,16 @@ import sys
 import pyperclip as clipboard
 import json
 
-SAVED_DATA="multi-clipboard\clipboard.json"
+SAVED_DATA="multi-clipboard\clipboard.json" # path to the data_file
 
-def save_data(filepath,data):
+def save_data(filepath,data): # save data to the file as json
      try:
          with open(filepath, 'w') as f:
             json.dump(data, f)
      except:
         print("Error saving data")
 
-def load_data(filepath):
+def load_data(filepath): # load data from the json file as dictionary
     try:
         with open(filepath, 'r') as f:
             data = json.load(f)
@@ -42,7 +42,7 @@ if len(sys.argv)==2:
           else:
               print("Key not found!")
 
-     elif command in ["list", "ls","--list","--ls"]:
+     elif command in ["list", "ls","--list","--ls"]: # list all the keys and values
           print("Listing...")
           print("{'key' :'value'}")
           print (data)
